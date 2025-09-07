@@ -1330,6 +1330,20 @@ textarea.form-input::-webkit-resizer {
   background: var(--bg-gradient-jet);
 }
 
+#contact-form-status {
+  text-align: end;
+  margin-top: 12px;
+  margin-right: 6px;
+}
+
+.error {
+  color: #e80000;
+}
+
+.success {
+  color: #3cff00;
+}
+
 /*-----------------------------------*\
   #RESPONSIVE
 \*-----------------------------------*/

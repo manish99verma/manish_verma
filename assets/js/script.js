@@ -122,6 +122,39 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
+async function handleSubmit(event) {
+  event.preventDefault();
+  var status = document.getElementById("contact-form-status");
+  var data = new FormData(event.target);
+
+  try {
+    const response = await fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (response.ok) {
+      status.innerHTML = "Message sent!";
+      status.classList.add("success");
+      form.reset();
+    } else {
+      throw new Error();
+    }
+  } catch {
+    status.innerHTML =
+      "Oops! There was a problem while sending your message, Please email me on manish6203993@gmail.com";
+  } finally {
+    setTimeout(() => {
+      status.innerHTML = "";
+      status.classList.remove("success");
+    }, 5000);
+  }
+}
+form.addEventListener("submit", handleSubmit);
+
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
